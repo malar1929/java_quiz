@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Java Quiz App</h1>
+    <form id="quiz-form">
+        <h3>1. Java is developed by?</h3>
+        <label><input type="radio" name="q1" value="1" required> Microsoft</label><br>
+        <label><input type="radio" name="q1" value="2"> Sun Microsystems</label><br>
+        <label><input type="radio" name="q1" value="3"> Google</label><br><br>
+        <h3>2. Java file extension is?</h3>
+        <label><input type="radio" name="q2" value="1" required> .java</label><br>
+        <label><input type="radio" name="q2" value="2"> .html</label><br>
+        <label><input type="radio" name="q2" value="3"> .css</label><br><br>
+        <h3>3. Java entry method?</h3>
+        <label><input type="radio" name="q3" value="1" required> start()</label><br>
+        <label><input type="radio" name="q3" value="2"> main()</label><br>
+        <label><input type="radio" name="q3" value="3"> run()</label><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="result" aria-live="polite" hidden></p>
+</div>
+<script>
+const form = document.querySelector("#quiz-form"), result = document.querySelector("#result"), correct = { q1: "2", q2: "1", q3: "2" };
+form.addEventListener("submit", (event) => { event.preventDefault(); const answers = new FormData(form);
+const score = Object.entries(correct).reduce((sum, [question, answer]) => sum + Number(answers.get(question) === answer), 0); result.textContent = `Your score is ${score} out of 3.`;
+result.hidden = false; });
+</script></body>
+</html>
